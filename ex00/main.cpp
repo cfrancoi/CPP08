@@ -1,36 +1,57 @@
 #include <iostream>
 #include <string>
 
-#include <array>
+#include <list>
+#include <algorithm>
 
 #include "easyfind.hpp"
+
+void	print(int n)
+{
+	std::cout << " " << n;
+}
+
+std::list<int>::iterator eend(std::list<int> *lst)
+{
+	return lst->end();
+}
 
 int main()
 {
 	srand(time(NULL));
-	std::array<int, 10> lst;
+	std::list<int> lst;
 
 	unsigned int i = 0;
-	while (i < lst.size())
+	while (i < 25)
 	{
-		lst[i] = rand() % 50;
-		std::cout << lst[i] << std::endl;
+		lst.push_back(rand() % 50);
 		i++;
 	}
-	int * p;
+	//lst.push_back(5);
 
-	p = easyfind(lst, 5);
+	for_each(lst.begin(), lst.end(), print);
+	std::cout << std::endl;
+	std::list<int>::iterator it;
+	std::list<int>::iterator itf;
 
-	if (p)
-		std::cout << "value was find : "<< *p << std::endl;
+	int fnd = rand() % 50;
+	it = easyfind(lst, fnd);
+
+	itf = find(lst.begin(), lst.end(), fnd);
+
+
+	if (itf != lst.end())
+		std::cout << "value was find : "<< *it << std::endl;
+	if (it != lst.end())
+		std::cout << "value was find : "<< *it << std::endl;
 	else
 		std::cout << "value was not find" << std::endl;
 
 	int val = (rand() % 50);
-	p = easyfind(lst, val);
+	it = easyfind(lst, val);
 	
-	if (p)
-		std::cout << "value was find : "<< *p << std::endl;
+	if (it != lst.end())
+		std::cout << "value was find : "<< *it << std::endl;
 	else
 		std::cout << "value was not find" << std::endl;
 

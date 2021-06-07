@@ -1,18 +1,11 @@
 
 template< typename T>
-int		*easyfind(T el, int to_find)
+typename T::iterator	easyfind(T & el, int to_find)
 {
-	unsigned int i;
+	typename T::iterator	it;
 
-	i = 0;
-
-	while (i < el.size())
-	{
-		if (to_find == el[i])
-		{
-			return &el[i];
-		}
-		i++;
-	}
-	return 0;
+	for(it = el.begin(); it != el.end(); it++)
+		if (*it == to_find)
+			break;
+	return it;
 }

@@ -13,14 +13,17 @@ int		rand_int(void)
 	return rand();
 }
 
-int 	range_int()
+int 	get_next_nb()
 {
 	static int i = 0;
 
-	srand(rand());
-	i += rand() % 10;
+	i += 5;
 
 	return i;
+}
+int 	range_int()
+{
+	return rand();
 }
 
 int main()
@@ -47,12 +50,17 @@ int main()
 		*it++ = rand_int();
 	}*/
 
-	sp.addRangeNumber(sp.begin(), sp.end(), rand_int);
+	sp.addRangeNumber(sp.begin(), sp.end(), get_next_nb);
 
 
 	sp.printTab();
 
 
+
+	std::cout << "shortest Span :" << sp.shortestSpan() << std::endl;
+	std::cout << "longest Span  :" << sp.longestSpan() << std::endl;
+
+	sp.addRangeNumber(sp.begin(), sp.end(), rand_int);
 
 	std::cout << "shortest Span :" << sp.shortestSpan() << std::endl;
 	std::cout << "longest Span  :" << sp.longestSpan() << std::endl;

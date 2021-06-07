@@ -30,6 +30,21 @@ int main(void)
 		++it;
 	}
 	std::stack<int> s(mstack);
+
+	it = find(mstack.begin(), mstack.end(), 737);
+	if (it != mstack.end())
+		std::cout << "find "<< *it << std::endl;
+	else
+		std::cout << "was not found" << std::endl;
+	mstack.pop();
+	mstack.pop();
+	it = find(mstack.begin(), mstack.end(), 737);
+	if (it != mstack.end())
+		std::cout << "find "<< *it << std::endl;
+	else
+		std::cout << "was not found" << std::endl;
+
+
 	return 0;
 }
 
